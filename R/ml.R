@@ -164,6 +164,8 @@ predictor <- function( method = c("randomForest", "svm", "nnet"), classifier, fe
   positives.test.score <- predictor( method = method, classifier = bestmodel, featureMat = featureMat[test_genes_p,])
   negatives.test.score <- predictor( method = method, classifier = bestmodel, featureMat = featureMat[test_genes_n,])
   
+
+
   train.AUC <- roc( c(rep(1, length(train_genes_p)), rep(0, length(train_genes_n))), 
                     c(positives.train.score, negatives.train.score) )$auc[1]
   test.AUC <- roc( c(rep(1, length(test_genes_p)), rep(0, length(test_genes_n))), 
@@ -198,7 +200,7 @@ cross_validation <- function( seed = 1, method = c("randomForest", "svm", "nnet"
   
   cvRes <- list()
   if( cpus > 1 ) {
-    require(snowfall)
+    #require(snowfall)
     sfInit(parallel = TRUE, cpus = cpus)
     sfExport("classifier", namespace = "mlDNA")
     sfExport("predictor", namespace = "mlDNA")
@@ -220,7 +222,7 @@ cross_validation <- function( seed = 1, method = c("randomForest", "svm", "nnet"
 
 plotROC <- function(cvRes) {
 
-
+ 
    cvListPredictions <- list()
    cvListLabels <- list()
    AUCVec <- rep(0, length(cvRes) )
@@ -232,10 +234,10 @@ plotROC <- function(cvRes) {
    }
    mAUC <- format( mean(AUCVec), digits= 3)
 
-    if( !require(ROCR) ) {
-       install.packages("ROCR")
-       library(ROCR)
-    }
+    #if( !require(ROCR) ) {
+    #   install.packages("ROCR")
+    #   library(ROCR)
+    #}
     pred <- prediction(cvListPredictions, cvListLabels)
     perf <- performance(pred,"tpr","fpr")
       

@@ -8,7 +8,7 @@ Cross validation method
 
 
 \description{
-The ML-based classification model is trained and evaluated with N-fold cross validation method.
+The ML-based classification model is trained and tested with N-fold cross validation method.
 }
 
 

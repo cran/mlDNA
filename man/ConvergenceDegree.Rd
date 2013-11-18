@@ -10,7 +10,7 @@ Calculating covergence degree
 
 \description{
 This function calculates the covergence degree between two sets of elements, and has been used to 
-estimate the degree of covergence between different stress responsive genes in Arabidopsis
+estimate the degree of covergence between genes responsive to different stresses in Arabidopsis
  (Ma and Wang, 2013)
 }
 
@@ -36,9 +36,8 @@ Chuang Ma, Xiangfeng Wang
 }
 
 \references{
-[1] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis of 
-transcriptomic data: a case study of stress-responsive gene expression in Arabidopsis thaliana.
- 2013 (Submitted).
+[1] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis: a study of
+stress-responsive transcriptomes in Arabidopsis thaliana. 2013(Submitted).
 }
 
 

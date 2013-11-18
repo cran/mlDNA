@@ -6,7 +6,7 @@
 Gene Ranking
 }
 \description{
-This function ranks genes based on differential expression method.
+This function ranks genes based on differential expression analytic method.
 }
 
 
@@ -28,7 +28,8 @@ geneRanker(expmat1, expmat2, genes,
 
 \details{
 Different methods can be selected. More information can be referred in GeneSelector package 
-(Boulesteix and Slawski, 2009).
+(Boulesteix and Slawski, 2009). To run this function, please first install geneSelector package 
+with the commands: source("http://bioconductor.org/biocLite.R"); biocLite("GeneSelector")
 }
 
 

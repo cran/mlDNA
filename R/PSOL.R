@@ -15,10 +15,10 @@ PSOL_InitialNegativeSelection <- function( featureMatrix,  positives, unlabels, 
   dir.create( path = PSOLResDic, showWarnings = FALSE)
   
    ##get ED matrix with rsgcc
-   if( !require(rsgcc) ) {
-      install.packages("rsgcc")
-      library(rsgcc)
-    }
+   #if( !require(rsgcc) ) {
+   #   install.packages("rsgcc")
+   #   library(rsgcc)
+   # }
    adjmat <- adjacencymatrix( mat = featureMatrix,  method = "ED", saveType= "bigmatrix", 
                               backingpath= PSOLResDic, backingfile= "featureMatrix_ED_adjmat_bfile", 
                               descriptorfile= "featureMatrix_ED_adjmat_dfile", cpus = cpus )
@@ -181,6 +181,15 @@ PSOL_NegativeExpansion <- function( featureMat, positives, negatives, unlabels, 
   numMat <- numMat[1:iter,]
   write.table( numMat, paste( PSOLResDic, "PSOL_NegativeIncreasement.txt", sep="" ), sep = "\t", quote = F )
   if( plot == TRUE ) {
+    if( !require(gplots) ) {
+       install.packages("gplots")
+       require(gplots)
+    }
+    if( !require(cairoDevice) ) {
+       install.packages("cairoDevice")
+       require(cairoDevice)
+    }
+
     pdf( paste( PSOLResDic, "PSOL_NegativeIncreasement.pdf", sep="" ), height= 10, width = 10 )  
     par(mar=c(5, 12, 4, 4) + 0.1)
     plot(numMat[,1], numMat[,3], axes=F, ylim=c(0,1.0), xlab="", ylab="",type="l",col="red", main="")
@@ -192,7 +201,7 @@ PSOL_NegativeExpansion <- function( featureMat, positives, negatives, unlabels, 
     plot(numMat[,1], numMat[,4], axes=F, ylim=c(0,max(numMat[,4])), xlab="", ylab="", type="l", col = "black", lty=2, main="",lwd=2)
     axis( 2, ylim=c(0,max(numMat[,4])), lwd=2, line=3.5, col = "black" )
     points(numMat[,1], numMat[,4], pch=20, col = "black", cex = 0.8)
-    mtext(2,text="Removed \"noise\" genes ",line=5.5)
+    mtext(2,text="Number of \"filtered-out\" genes ",line=5.5)
   
     axis(1,numMat[,1] )
     mtext("Iteration Number",side=1,col="black",line=2)

@@ -8,8 +8,8 @@ Prediction
 
 
 \description{
-Score each sample with machine learning-based classification prediction model alreadly trained 
-with the training dataset.
+Score each sample with the machine learning-based classification prediction model alreadly trained 
+with training dataset.
 }
 
 

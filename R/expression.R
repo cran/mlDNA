@@ -156,6 +156,13 @@ expFeatureMatrix <- function( expMat1, sampleVec1, expMat2, sampleVec2, logTrans
 
 ##gene selection with different statistical methods
 geneRanker <- function( expmat1, expmat2, genes, rankers = c("ttest", "SAM", "Limma"), verbose = FALSE ) {
+
+ #if( !require(GeneSelector) ) {
+ #   source("http://bioconductor.org/biocLite.R")
+ #   biocLite("GeneSelector")
+ #   require(GeneSelector)
+ #}
+  
   
   dataMatrix <- cbind( expmat1[genes,], expmat2[genes,] )
   classes <- c( rep(0, ncol(expmat1)), rep(1, ncol(expmat2)) )

@@ -60,9 +60,8 @@ Chuang Ma, Xiangfeng Wang.
 
 
 \references{
-[1] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis of 
-transcriptomic data: a case study of stress-responsive gene expression in Arabidopsis thaliana. 
-2013(Submitted).
+[1] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis:a case 
+study of stress-responsive transcriptomes in Arabidopsis thaliana. 2013(Submitted).
 }
 
 

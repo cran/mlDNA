@@ -9,7 +9,7 @@ Average-based rank score
 
 
 \description{
-This function calculates the activities of pathways in the whole genome with the the average-based
+This function calculates the activities of pathways in the whole genome with the average-based
  rank scoring algorithm (Yang, et al., 2011; Ma and Wang, 2013). This rank-based statistics is 
  robust for directly comparing the activities of pathways with different gene numbers under 
  different experimental conditions, since it produces a normalized value with the consideration
@@ -45,9 +45,8 @@ Chuang Ma, Xiangfeng Wang
 [1] Huang Yang, Chao Cheng and Wei Zhang. Average rank-based score to measure deregulation
  of molecular pathway gene sets. PLoS One, 2011, 6(11): e27579.
 
-[2] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis of 
-transcriptomic data: a case study of stress-responsive gene expression in Arabidopsis thaliana.
- 2013 (Submitted).
+[2] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis: a study of
+stress-responsive transcriptomes in Arabidopsis thaliana. 2013(Submitted).
 }
 
 

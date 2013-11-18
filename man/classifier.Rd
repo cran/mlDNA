@@ -21,8 +21,8 @@ classifier( method = c("randomForest", "svm", "nnet" ),
 
 
 \arguments{
-  \item{method}{a character string specifying machine learning method used to constrct 
-  prediction model. Currently the user-optional values are "randomForest", "svm" or "nnet".}
+  \item{method}{a character string specifying machine learning method used to construct 
+  prediction models. Currently the user-optional values are "randomForest", "svm" or "nnet".}
   \item{featureMat}{a numeric matrix recording feature values for each sample.}
   \item{positiveSamples}{a character vector recording positive samples used to
    train classification model.}
@@ -44,9 +44,9 @@ classifier( method = c("randomForest", "svm", "nnet" ),
   For the svm algorithm, the default kernel function is the "radial"(radial basis function; RBF).
    Other optional kernels are the "linear", the "polynomial", and the "sigmoid" fuctions. The range
     of degree (for the kernel type of polynomial), gamma (for radial), coef0 (for polynomial 
-    and sigmoid) and cost (the cost parameters for all kernels) should be designated. More 
-    information about the parameters for svm can be referred the description of "svm" function
-     in R package e1071.
+    and sigmoid) and cost (the cost parameters for all kernels) should be designated. Please refer
+   the description of "svm" function in R package e1071 for more information 
+   about the parameters of svm. 
 
   For the neural network, the important parameters are size (number of units in the hidden layer),
    decay (parameter for weight decay. Default 0), trace (switch for tracing optimization. 

@@ -14,10 +14,10 @@ exp2net <- function( expmat, method = c("GCC", "PCC", "SCC", "KCC", "BiWt", "MI"
     ##create PSOLResDic
     dir.create( path = netResFileDic, showWarnings = FALSE)
 
-    if( !require(rsgcc) ) {
-      install.packages("rsgcc")
-      library(rsgcc)
-    }
+    #if( !require(rsgcc) ) {
+    #  install.packages("rsgcc")
+    #  library(rsgcc)
+    #}
  
     ##get adjmatrix 
     cat("...calculating adjacency matrix...\n")
@@ -91,6 +91,7 @@ netFeatureMatrix <- function( net1, net2, nodes = NULL, knodes = NULL, cpus = 1,
    ##check features
    if( length(features) == 0 ) 
       stop("Error: no features is specified.\n" )
+
    tmp <- setdiff( features, c( "expDistance", "ASC", "corDistance", "AllConnectivity", "PosConnectivity", "NegConnectivity", "closeness", "eccentricity", "eigenvector", "page.rank", "dis2knodes", "closeness2knodes", "eccenticity2knodes") )
    if( length(tmp) > 0 ) {
      cat(tmp)
@@ -156,14 +157,63 @@ netFeatureMatrix <- function( net1, net2, nodes = NULL, knodes = NULL, cpus = 1,
      stop("Error: different dimensions for feature matrix from net1 and net2.\n" )
   }
   matdif <- mat1 - mat2[rownames(mat1), ]
-  colnames(matdif) <- paste( colnames(matdif), ".d", sep = "_" )
-  colnames(mat1) <- paste( colnames(mat1), net1$expDescribe, sep = "_" )
-  colnames(mat2) <- paste( colnames(mat2), net2$expDescribe, sep = "_" )
+  colnames(matdif) <- paste( colnames(matdif), ".d", sep = "" )
+  colnames(mat1) <- paste( colnames(mat1), net1$expDescribe, sep = "." )
+  colnames(mat2) <- paste( colnames(mat2), net2$expDescribe, sep = "." )
 
   resmat <- cbind( matd, mat1, mat2, matdif )
 
   resmat
 
+}
+
+interactionRemoval <- function( adjmat1, adjmat2, threshold1, threshold2 ) {
+
+  getSetDiff <- function( v1, v2 ) {
+     len1 <- length(v1)
+     if( len1 < 1e+09 ){
+       return( setdiff(v1, v2) )
+     }else {
+       idx1 <- floor( len1/2 )
+       res1 <- setdiff( v1[1:idx1], v2)
+       res2 <- setdiff( v1[(idx1+1):len1], v2)
+       return( c(res1, res2))
+    }
+  }#end fun
+
+  #check dim
+  if( nrow(adjmat1) != nrow(adjmat2) ) {
+     stop("Error: different genes in adjmat1 and adjmat2!")
+  }
+
+  if( rownames(adjmat1) == NULL | rownames(adjmat2) == NULL ) {
+     stop("Error: no rownames assigned for adjmat1 or adjmat2!")
+  }
+ 
+  #check gene order
+  if(  all.equal( rownames(adjmat1), rownames(adjmat2) ) != TRUE ) {
+     stop("Error: different order of genes in adjmat1 and adjmat2!")
+  }
+
+  #now start
+  mat <- matrix(0, nrow= nrow(adjmat1), ncol=1 )
+  rownames(mat) <- rownames(adjmat1)
+  colnames(mat) <- c("net2_Specific_Degree")
+
+ 
+  net1_Idx <- which( abs(adjmat1[,]) >= threshold1 )
+  net2_Idx <- which( abs(adjmat2[,]) >= threshold2 )
+  idx <- getSetDiff( net2_Idx, net1_Idx)
+  
+  if( length(idx) != 0 ){
+    tmp <- adjmat2[,]
+    tmp[idx] <- 1
+    netS_Idx_0 <- which( abs(adjmat2[,]) < threshold2 )
+    tmp[netS_Idx_0] <- 0
+    tmp[net1_Idx] <- 0
+    mat[,1] <- apply( tmp, 1, sum )
+  }
+  mat
 }
 
 

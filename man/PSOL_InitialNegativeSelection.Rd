@@ -9,7 +9,10 @@ Initial negative set selection for building machine learning-based classificatio
 
 \description{
 This function selects an initial negative set with the machine learning(ML)-based positive-only
- sample learning (PSOL) algorithm.
+ sample learning (PSOL) algorithm. The PSOL algorithm has been previously applied to predict
+genomic loci encoding functional non-coding RNAs (Wang, et al. 2006). We have employed this
+algorithm to identify stress-related candidate genes in Arabidopsis based on the stress 
+microarray datasets (Ma and Wang, 2013).
 }
 
 
@@ -49,9 +52,8 @@ Chuang Ma and Xiangfeng Wang.
 [1] Chunlin Wang, Chris Ding, Richard F. Meraz and Stephen R. Holbrook. PSoL: a positive sample 
 only learning algorithm for finding non-coding RNA genes. Bioinformatics, 2006, 22(21): 2590-2596.
 
-[2] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis of 
-transcriptomic data: a case study of stress-responsive gene expression in Arabidopsis thaliana. 
-2013(Submitted).
+[2] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis: a case study
+ of stress-responsive transcriptomes in Arabidopsis thaliana. 2013(Submitted).
 }
 
 

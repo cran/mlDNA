@@ -2,34 +2,14 @@
 ##global functions 
 ##Date: 2012-07-19
 #######################################
-library(GeneSelector)
-library(qvalue)
-library(hash)
-
-
-#Function: this function get system time
-.GetSystemTime <- function() {
-  
-  CurTime = format(Sys.time(), "%H:%M:%OS4")
-  timeVec = str_split_fixed(CurTime, ":", 3)
-  CurHour = timeVec[1,1]
-  CurMin  = timeVec[1,2]
-  CurSec  = timeVec[1,3]
-  CurTimeIndex = (as.numeric(CurHour)*3600 +  as.numeric(CurMin)*60 +  as.numeric(CurSec ))*10000
-  
-  CurDate = Sys.Date()
-  timeVec = str_split_fixed(CurDate, "-", 3)
-  CurYear=timeVec[1,1]
-  CurMonth = timeVec[1,2]
-  CurDate = timeVec[1,3]
-  TimeInfo = data.frame(Year=CurYear, Month=CurMonth, Date=CurDate, Hour=CurHour, Min=CurMin, Sec=CurSec, TimeIndex=CurTimeIndex)
-  return(TimeInfo)
-}
-
+#library(GeneSelector)
+#library(qvalue)
+#library(hash)
 
 
 ##check big matrix
 .checkadjmatrix <- function( mat, backingpath = NULL, descriptorfile = NULL ) {
+
   
   descfile <- NULL
   if( is.big.matrix(mat) ) {

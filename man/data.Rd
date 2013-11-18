@@ -8,7 +8,7 @@
 	example data for mlDNA 
 }
 \description{
-	salt stress expression data and 50 salt-response genes
+	salt stress expression data and 50 known salt-related genes
 }
 \usage{
 	data(mlDNA)

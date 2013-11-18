@@ -48,13 +48,6 @@ The PSOL-related results are output in the "resultDic" directory.
  Chuang Ma, Xiangfeng Wang.
 }
 
-\references{
-[1] Chunlin Wang, Chris Ding, Richard F. Meraz and Stephen R. Holbrook. PSoL: a positive sample 
-only learning algorithm for finding non-coding RNA genes. Bioinformatics, 2006, 22(21): 2590-2596.
-
-[2] Chuang Ma, Xiangfeng Wang. Machine learning-based differential network analysis of 
-transcriptomic data: a case study of stress-responsive gene expression in Arabidopsis thaliana. Submitted.
-}
 
 \examples{
 

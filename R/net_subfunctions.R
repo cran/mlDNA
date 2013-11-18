@@ -534,10 +534,10 @@
     result <- .getNodeProperty( graph = graph, genes = genes, types = types, normalized = normalized )
   }
   else {
-    if( !require(snowfall) ){
-      install.packages("snowfall")
-      library(snowfall)
-    }
+    #if( !require(snowfall) ){
+    #  install.packages("snowfall")
+    #  library(snowfall)
+    #}
     
     #not compute "eigenvector", "subgraph.centrality"
     types.new <- types[!( (types == "eigenvector") | (types == "subgraph.centrality") )]
@@ -577,8 +577,8 @@
 ##get distance between two genes
 .DNA.distance <- function( graph, v, to, cpus = 1, saveType = "bigmatrix", backingpath = NULL, backingfile = NULL, descriptorfile = NULL){
   
-  if( !require(igraph) )
-    library(igraph)
+  #if( !require(igraph) )
+  #  library(igraph)
   
   if( saveType == "bigmatrix" ) {
     if( is.null(backingpath) | is.null(backingfile) | is.null(descriptorfile) )
